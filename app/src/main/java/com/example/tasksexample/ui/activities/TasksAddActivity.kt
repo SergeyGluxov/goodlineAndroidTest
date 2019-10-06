@@ -11,7 +11,6 @@ import com.example.tasksexample.R
 import com.example.tasksexample.mvp.models.realm.TasksRealm
 import com.example.tasksexample.mvp.presenters.TasksAddPresenter
 import com.example.tasksexample.mvp.views.AddTaskView
-import io.realm.Realm
 import kotlinx.android.synthetic.main.activity_task_add.*
 
 class TasksAddActivity : MvpAppCompatActivity(), AddTaskView {
@@ -31,11 +30,11 @@ class TasksAddActivity : MvpAppCompatActivity(), AddTaskView {
         setContentView(R.layout.activity_task_add)
         etContent = findViewById(R.id.edContent)
         if (intent.getStringExtra("typeQuery").toString() == "edit") {
-            title = "Редактирование заметки"
+            toolbar.title = "Редактирование заметки"
             btSave.visibility = View.GONE
             tasksAddTasksPresenter.showTask(intent.getIntExtra("TaskId", 1))
         } else {
-            title = "Новая заметка"
+            toolbar.title = "Новая заметка"
             btEdit.visibility = View.GONE
         }
     }

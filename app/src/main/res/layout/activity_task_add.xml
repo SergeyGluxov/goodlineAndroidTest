@@ -1,53 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:orientation="vertical"
+        android:layout_height="match_parent"
         tools:context=".ui.activities.TasksAddActivity">
-
-
-    <android.support.design.widget.TextInputLayout
-            android:id="@+id/passwordTextInputLayout"
-            android:layout_marginTop="25dp"
-            android:layout_marginHorizontal="20dp"
-            app:boxStrokeColor="@color/colorPrimary"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+    <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-        <EditText
-                android:id="@+id/edContent"
+            android:layout_height="match_parent">
+    <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="#ffab00" />
+    </RelativeLayout>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="?attr/actionBarSize"
+            android:orientation="vertical">
+
+        <android.support.design.widget.TextInputLayout
+                android:id="@+id/passwordTextInputLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:minLines="3"
-                android:maxLines="6"
-                android:hint="Введите текст задачи"
-                android:gravity="top"
-                android:inputType="textCapSentences|textNoSuggestions|textMultiLine"/>
-    </android.support.design.widget.TextInputLayout>
-    <Button
-            android:onClick="saveTask"
-            android:id="@+id/btSave"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:background="#009788"
-            android:text="Сохранить"
-            android:textColor="#FFFFFF"
-            android:textSize="14sp"
-            android:layout_marginRight="15dp"
-            android:layout_marginLeft="15dp"/>
-    <Button
-            android:onClick="editTask"
-            android:id="@+id/btEdit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:background="#ff6877"
-            android:text="Изменить"
-            android:textColor="#FFFFFF"
-            android:textSize="14sp"
-            android:layout_marginRight="15dp"
-            android:layout_marginLeft="15dp"/>
-</LinearLayout>
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="25dp"
+                app:boxStrokeColor="@color/colorPrimary">
+
+            <EditText
+                    android:id="@+id/edContent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="top"
+                    android:hint="Введите текст задачи"
+                    android:inputType="textCapSentences|textNoSuggestions|textMultiLine"
+                    android:maxLines="6"
+                    android:minLines="3" />
+        </android.support.design.widget.TextInputLayout>
+
+        <Button
+                android:id="@+id/btSave"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:onClick="saveTask"
+                android:text="Сохранить"
+                android:textColor="@color/colorPrimary"
+                android:background="@drawable/border_button"
+                android:textSize="14sp" />
+
+        <Button
+                android:id="@+id/btEdit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/edit_border_button"
+                android:onClick="editTask"
+                android:text="Изменить"
+                android:textColor="@color/colorAccent"
+                android:textSize="14sp" />
+    </LinearLayout>
+</RelativeLayout>

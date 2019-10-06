@@ -3,7 +3,10 @@ package com.example.tasksexample.ui.activities
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.view.View
+import android.view.animation.AnimationUtils
+import android.view.animation.LayoutAnimationController
 import android.widget.Toast
 import com.arellomobile.mvp.MvpAppCompatActivity
 import com.arellomobile.mvp.presenter.InjectPresenter
@@ -36,21 +39,25 @@ class MainActivity : MvpAppCompatActivity(), MainView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        toolbar.title = "Гудлайн тест"
         bus.register(this)
     }
 
     /**Presenters**/
     override fun selectTasks(tasks: RealmResults<TasksRealm>) {
         val layoutManager = LinearLayoutManager(this)
+        val controller: LayoutAnimationController =
+            AnimationUtils.loadLayoutAnimation(this, R.anim.layout_item_load_anim)
         layoutManager.orientation = LinearLayoutManager.VERTICAL
         rvTaskList.layoutManager = layoutManager
-        rvTaskList.adapter = TasksAdapter(bus,this, tasks)
-
+        rvTaskList.adapter = TasksAdapter(bus, this, tasks)
         if (tasks.isEmpty()) {
             tvNoneTask.visibility = View.VISIBLE
         } else {
             tvNoneTask.visibility = View.GONE
         }
+        rvTaskList.layoutAnimation = controller
+        rvTaskList.scheduleLayoutAnimation()
         tasks.addChangeListener { t: RealmResults<TasksRealm>, changeSet: OrderedCollectionChangeSet?
             ->
             if (tasks.isEmpty()) {
@@ -58,10 +65,11 @@ class MainActivity : MvpAppCompatActivity(), MainView {
             } else {
                 tvNoneTask.visibility = View.GONE
             }
-            rvTaskList.adapter = TasksAdapter(bus,this, tasks)
+            rvTaskList.adapter = TasksAdapter(bus, this, tasks)
             rvTaskList.adapter!!.notifyDataSetChanged()
         }
     }
+
     override fun finishTask(id: Int, message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
