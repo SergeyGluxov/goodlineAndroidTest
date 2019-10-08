@@ -79,7 +79,6 @@ class TasksAdapter(
             itemView.btDelete.setOnClickListener {
                 bus.post(DeleteTasksAction(taskRealm[p0]!!.id!!))
             }
-
             this.currentPosition = p0
         }
 

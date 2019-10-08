@@ -1,22 +1,14 @@
 package com.example.tasksexample.mvp.presenters
 
-import android.content.ContentValues.TAG
-import android.util.Log
-import android.widget.Toast
 import com.arellomobile.mvp.InjectViewState
 import com.arellomobile.mvp.MvpPresenter
 import com.example.tasksexample.bus.DeleteTasksAction
-import com.example.tasksexample.bus.EditTasksAction
 import com.example.tasksexample.bus.TasksCheckedAction
 import com.example.tasksexample.mvp.models.realm.TasksRealm
 import com.example.tasksexample.mvp.views.MainView
 import com.squareup.otto.Bus
 import com.squareup.otto.Subscribe
 import io.realm.Realm
-import io.realm.kotlin.where
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 
 @InjectViewState
 class MainPresenter(bus: Bus) : MvpPresenter<MainView>() {

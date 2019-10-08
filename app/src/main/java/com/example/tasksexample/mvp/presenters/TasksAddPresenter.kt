@@ -2,13 +2,9 @@ package com.example.tasksexample.mvp.presenters
 
 import com.arellomobile.mvp.InjectViewState
 import com.arellomobile.mvp.MvpPresenter
-import com.example.tasksexample.bus.EditTasksAction
-import com.example.tasksexample.bus.TasksCheckedAction
 import com.example.tasksexample.helpers.Helpers
 import com.example.tasksexample.mvp.models.realm.TasksRealm
 import com.example.tasksexample.mvp.views.AddTaskView
-import com.squareup.otto.Bus
-import com.squareup.otto.Subscribe
 import io.realm.Realm
 
 @InjectViewState

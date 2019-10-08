@@ -3,7 +3,6 @@ package com.example.tasksexample.ui.activities
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.view.animation.AnimationUtils
 import android.view.animation.LayoutAnimationController
@@ -20,7 +19,6 @@ import com.example.tasksexample.mvp.views.MainView
 import com.squareup.otto.Bus
 import com.squareup.otto.Subscribe
 import io.realm.OrderedCollectionChangeSet
-import io.realm.Realm
 import io.realm.RealmResults
 import kotlinx.android.synthetic.main.activity_main.*
 
